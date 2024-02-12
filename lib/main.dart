@@ -20,11 +20,11 @@ class _MyAppState extends State<MyApp> {
   @override
 
   Widget build(BuildContext context) {
-  double x=Random().nextInt(10)/10;
-  double y=Random().nextInt(10)/10;
-  double z=Random().nextInt(10)/10;
-  double i=Random().nextInt(10)/10;
-  double n=Random().nextInt(10)/10;
+  double x=Random().nextInt(10)/20;
+  double y=Random().nextInt(10)/20;
+  double z=Random().nextInt(10)/20;
+  double i=Random().nextInt(10)/20;
+  double n=Random().nextInt(10)/20;
     return FlutterMap(
       options: const MapOptions(
         initialCenter:  LatLng(56.285, 84.42),
