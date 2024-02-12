@@ -28,7 +28,7 @@ class _MyAppState extends State<MyApp> {
     return FlutterMap(
       options: const MapOptions(
         initialCenter:  LatLng(56.285, 84.42),
-        initialZoom: 14,
+        initialZoom: 10,
       ),
 
       children: [
