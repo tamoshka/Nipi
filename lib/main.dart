@@ -1,39 +1,11 @@
-/*import 'package:flutter/material.dart';
-
-///import 'package:budget_rosneft/pages/main_screen.dart';
-
-
-import 'MapDataBasePage.dart';
-import 'map.dart';
-
-void main() async {
-  runApp(MaterialApp(
-    // Удалить баннер отладки
-    debugShowCheckedModeBanner: false,
-    title: 'Карта',
-    theme: ThemeData(
-      primaryColor: Colors.blueAccent,
-    ),
-    initialRoute: '/',
-    routes: {
-      ///'/': (context) => MainScreen(),
-      '/mapDB': (context) => MapDB(),
-    },
-  ));
-}*/
-
-import 'dart:math';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_map/flutter_map.dart';
-import 'package:latlong2/latlong.dart';
 import 'package:url_launcher/url_launcher.dart';
-import 'Widget_Map.dart';
+import 'PolygonMap.dart';
 import 'PolylineMap.dart';
 import 'CircleMap.dart';
 import 'MapDataBasePage.dart';
-import 'MapDataBase.dart';
-import 'package:sqflite/sqflite.dart' as sql;
+import 'package:geodesy/geodesy.dart';
 
 void main() {
   runApp(const MaterialApp(home:MyApp()),);
@@ -51,7 +23,6 @@ class _MyAppState extends State<MyApp> {
   int _selectedIndex = 0;
 
 
-
   void _onItemTapped(int index) {
     if (index==1)
     {
@@ -66,19 +37,6 @@ class _MyAppState extends State<MyApp> {
         );
       });
     }
-    else
-      {
-        setState(() {
-          Navigator.push(
-            context,
-            MaterialPageRoute(
-              builder: (context) {
-                return MyApp();
-              },
-            ),
-          );
-        });
-      }
   }
   @override
 

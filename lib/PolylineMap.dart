@@ -1,8 +1,7 @@
-import 'package:flutter/foundation.dart';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_map/flutter_map.dart';
 import 'package:latlong2/latlong.dart';
-import 'package:url_launcher/url_launcher.dart';
 import 'dart:math';
 import 'MapDataBase.dart';
 import 'package:uuid/uuid.dart';
@@ -12,6 +11,8 @@ class PolylineMap extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     double x=Random().nextInt(10)/20;
+    var uuid = Uuid();
+    var v1 = uuid.v1();
     var cord1=56.291+x;
     var cord2=84.43+x;
     var cord3=56.3+x;
@@ -22,7 +23,7 @@ class PolylineMap extends StatelessWidget {
     x<0.25?color='blue':color='red';
     var cords = cord1.toString()+', '+cord2.toString()+'; '+cord3.toString()+', '+cord4.toString()+'; '+cord5.toString()+', '+cord6.toString();
     final now = DateTime.now();
-    SQLHelperMap().createItemPoligon(cords, color, now);
+    SQLHelperMap().createItemPoligon(v1, cords, color, now.toString());
     return PolylineLayer(
         polylines: [
           Polyline (

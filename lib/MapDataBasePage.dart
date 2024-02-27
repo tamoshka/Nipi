@@ -1,4 +1,4 @@
-import 'dart:typed_data';
+
 import 'MapDataBase.dart';
 import 'package:flutter/material.dart';
 class MapDB extends StatefulWidget {
@@ -9,7 +9,7 @@ class MapDB extends StatefulWidget {
 }
 
 class _MapDBState extends State<MapDB> {
-  //String text = '';
+
   Future<String> createText() async {
     return '${await SQLHelperMap().getPolygonItemsAsString()}';
   }

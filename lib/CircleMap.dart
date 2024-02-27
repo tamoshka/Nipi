@@ -8,15 +8,19 @@ import 'MapDataBase.dart';
 import 'package:uuid/uuid.dart';
 
 class CircleMap extends StatelessWidget {
-
+  Future<void> createText(String v1, String cords) async {
+    SQLHelperMap().createItemPoligon(v1, cords, "green", DateTime.now().toString());
+  }
   @override
+
   Widget build(BuildContext context) {
     double x=Random().nextInt(10)/20;
+    var uuid = Uuid();
+    var v1 = uuid.v1();
     var cord1=56.3+x;
     var cord2=84.4+x;
     var cords = cord1.toString()+', '+cord2.toString();
-    final now = DateTime.now();
-    SQLHelperMap().createItemPoligon(cords, 'green', now);
+    createText(v1, cords);
     return CircleLayer(
         circles: [
           CircleMarker(
@@ -24,7 +28,7 @@ class CircleMap extends StatelessWidget {
             radius: 1000,
             useRadiusInMeter: true,
             ),
-        ]
+        ],
     );
   }
 }
