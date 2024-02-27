@@ -9,7 +9,7 @@ import 'package:uuid/uuid.dart';
 
 class CircleMap extends StatelessWidget {
   Future<void> createText(String v1, String cords) async {
-    SQLHelperMap().createItemPoligon(v1, cords, "green", DateTime.now().toString());
+    SQLHelperMap().createItemPoligon(v1, 'Circle', cords, "green", DateTime.now().toString());
   }
   @override
 

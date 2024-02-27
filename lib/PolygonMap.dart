@@ -23,7 +23,7 @@ class PolygonMap extends StatelessWidget {
     x<0.25?color='blue':color='red';
     var cords = cord1.toString()+', '+cord2.toString()+'; '+cord3.toString()+', '+cord4.toString()+'; '+cord5.toString()+', '+cord6.toString();
     final now = DateTime.now();
-    SQLHelperMap().createItemPoligon(v1, cords, color, now.toString());
+    SQLHelperMap().createItemPoligon(v1, 'Polygon', cords, color, now.toString());
     return PolygonLayer(
         polygons: [
           Polygon (

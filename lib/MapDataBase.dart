@@ -16,10 +16,11 @@ class SQLHelperMap  {
 
   FutureOr<sql.Database> db() async {
     final Directory dir = await getApplicationDocumentsDirectory();
-    final String path = '${dir.path}/Nipmap.sqlite';
+    final String path = '${dir.path}/Nipimap.sqlite';
     return await sql.openDatabase(path, version: 1, onCreate: (sql.Database database, int version) async {
       await database.execute("""CREATE TABLE poligons(
         id TEXT NOT NULL,
+        type TEXT NOT NULL,
         coordinates TEXT NOT NULL,
         color TEXT NOT NULL,
         datetime TEXT NOT NULL
@@ -27,13 +28,13 @@ class SQLHelperMap  {
       """);
 
       await database.insert('poligons',
-          {'id':'1','coordinates':'56.3, 84.4', 'color': 'Зеленый', 'datetime': '1969-07-20 20:18:04Z'},
+          {'id':'1', 'type':'Circle','coordinates':'56.3, 84.4', 'color': 'Green', 'datetime': '1969-07-20 20:18:04Z'},
           conflictAlgorithm: sql.ConflictAlgorithm.replace);
     });
   }
 
-  Future<void> createItemPoligon(String id, String coordinates, String color, String datetime) async {
-    final data = {'id': id, 'coordinates': coordinates, 'color': color, 'datetime': datetime};
+  Future<void> createItemPoligon(String id, String type, String coordinates, String color, String datetime) async {
+    final data = {'id': id, 'type':type, 'coordinates': coordinates, 'color': color, 'datetime': datetime};
     final sql.Database? db = await database;
     await db!.insert('poligons', data, conflictAlgorithm: sql.ConflictAlgorithm.replace);
   }
@@ -41,11 +42,11 @@ class SQLHelperMap  {
   Future<String> getPolygonItemsAsString() async {
     final sql.Database? db = await database;
 
-    String stringHelper = '${await db?.rawQuery('SELECT id, coordinates, color, datetime FROM poligons')}';
+    String stringHelper = '${await db?.rawQuery('SELECT id, type, coordinates, color, datetime FROM poligons')}';
     late String string = ' ';
     for( int i = 0; i < stringHelper.length; i++){
       if (stringHelper[i] == '}') {
-        string += '\n';
+        string += '\n\n';
       }
       else if (stringHelper[i] == '{' || stringHelper[i] == ',' || stringHelper[i] == '[' || stringHelper[i] == ']') {
         continue;

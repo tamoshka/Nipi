@@ -50,7 +50,7 @@ class _MyAppState extends State<MyApp> {
       body: FlutterMap(
         options: const MapOptions(
           initialCenter: LatLng(56.285, 84.42),
-          initialZoom: 10,
+          initialZoom: 10
         ),
         children: [
           TileLayer(
