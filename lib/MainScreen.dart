@@ -8,7 +8,6 @@ import 'MapDataBasePage.dart';
 import 'package:geodesy/geodesy.dart';
 
 class MainScreen extends StatefulWidget {
-  // This widget is the root of your application.
   const MainScreen({super.key,});
   @override
   State<MainScreen> createState()=>MainScreenState();
@@ -70,7 +69,6 @@ class MainScreenState extends State<MainScreen> {
         options: const MapOptions(
           initialCenter: LatLng(56.285, 84.42),
           initialZoom: 10,
-          ///onTap: onPolygon
         ),
         children: [
           TileLayer(
