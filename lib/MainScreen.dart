@@ -18,7 +18,8 @@ class MainScreen extends StatefulWidget {
 class MainScreenState extends State<MainScreen> {
   int _selectedIndex = 0;
   var mypolygones = <Polygon>[
-    Polygon(points:[LatLng(56.28, 84.41), LatLng(56.27, 84.419), LatLng(56.289, 84.42)], color: Colors.red, isFilled: true)
+    Polygon(points:[LatLng(56.28, 84.41), LatLng(56.27, 84.419), LatLng(56.289, 84.42)],
+        color: Colors.red, isFilled: true)
   ];
   var mypolylines = <Polyline>[
     Polyline(points:[LatLng(56.291, 84.43), LatLng(56.3, 84.44), LatLng(56.295, 84.45)], color: Colors.red)
@@ -46,12 +47,18 @@ class MainScreenState extends State<MainScreen> {
 
   Widget build(BuildContext context) {
     double e = Random().nextInt(10)/20;
-    String cordPoly=(56.28+e).toString()+','+(84.41+e).toString()+'; '+(56.27+e).toString()+','+(84.419+e).toString()+'; '+(56.289+e).toString()+','+(84.42+e).toString();
-    mypolygones.add(Polygon(label:'Полигон\n+$cordPoly', labelPlacement: PolygonLabelPlacement.polylabel, labelStyle: TextStyle(fontWeight: FontWeight.bold),
-    points: [LatLng(56.28+e, 84.41+e), LatLng(56.27+e, 84.419+e), LatLng(56.289+e, 84.42+e)], color: e<0.25? Colors.red:Colors.blue, isFilled: true)
+    String cordPoly=(56.28+e).toString()+','+(84.41+e).toString()+'; '
+        +(56.27+e).toString()+','+(84.419+e).toString()+'; '+(56.289+e).toString()+','+(84.42+e).toString();
+
+    mypolygones.add(Polygon(label:'Полигон\n+$cordPoly',
+        labelPlacement: PolygonLabelPlacement.centroid,
+        labelStyle: TextStyle(fontWeight: FontWeight.bold, color:Colors.green,),
+        points: [LatLng(56.28+e, 84.41+e), LatLng(56.27+e, 84.419+e),
+        LatLng(56.289+e, 84.42+e)], color: e<0.25? Colors.red:Colors.blue, isFilled: true)
     );
 
-    mypolylines.add(Polyline(points: [LatLng(56.291+e, 84.43+e), LatLng(56.3+e, 84.44+e), LatLng(56.295+e, 84.45+e)], color: e<0.25? Colors.red:Colors.blue));
+    mypolylines.add(Polyline(points: [LatLng(56.291+e, 84.43+e), LatLng(56.3+e, 84.44+e),
+                    LatLng(56.295+e, 84.45+e)], color: e<0.25? Colors.red:Colors.blue));
     mycircle.add(CircleMarker(point:LatLng(56.3+e, 84.4+e), radius:1000, useRadiusInMeter: true,));
     return Scaffold(
       appBar: AppBar(

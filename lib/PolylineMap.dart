@@ -22,7 +22,8 @@ class PolylineMap extends StatelessWidget {
     var cord6=84.45+x;
     var color;
     x<0.25?color='blue':color='red';
-    var cords = cord1.toString()+', '+cord2.toString()+'; '+cord3.toString()+', '+cord4.toString()+'; '+cord5.toString()+', '+cord6.toString();
+    var cords = cord1.toString()+', '+cord2.toString()+'; '+cord3.toString()+', '
+        +cord4.toString()+'; '+cord5.toString()+', '+cord6.toString();
     final now = DateTime.now();
     SQLHelperMap().createItemPoligon(v1, 'Polyline', cords, color, now.toString());
     return PolylineLayer(
