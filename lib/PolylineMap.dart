@@ -7,10 +7,11 @@ import 'MapDataBase.dart';
 import 'package:uuid/uuid.dart';
 
 class PolylineMap extends StatelessWidget {
-
+  var mypolylines;
+  final double x;
+  PolylineMap(this.mypolylines, this.x);
   @override
   Widget build(BuildContext context) {
-    double x=Random().nextInt(10)/20;
     var uuid = Uuid();
     var v1 = uuid.v1();
     var cord1=56.291+x;
@@ -25,12 +26,7 @@ class PolylineMap extends StatelessWidget {
     final now = DateTime.now();
     SQLHelperMap().createItemPoligon(v1, 'Polyline', cords, color, now.toString());
     return PolylineLayer(
-        polylines: [
-          Polyline (
-            points: [LatLng(56.291+x, 84.43+x), LatLng(56.3+x, 84.44+x), LatLng(56.295+x, 84.45+x)],
-            color: x<0.25 ? Colors.blue : Colors.red,
-          )
-        ]
+        polylines: mypolylines,
     );
   }
 }

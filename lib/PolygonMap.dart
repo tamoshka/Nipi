@@ -7,10 +7,11 @@ import 'MapDataBase.dart';
 import 'package:uuid/uuid.dart';
 
 class PolygonMap extends StatelessWidget {
-
+  var mypolygons;
+  final double x;
+  PolygonMap(this.mypolygons, this.x);
   @override
   Widget build(BuildContext context) {
-    double x=Random().nextInt(10)/20;
     var uuid = Uuid();
     var v1 = uuid.v1();
     var cord1=56.28+x;
@@ -25,13 +26,7 @@ class PolygonMap extends StatelessWidget {
     final now = DateTime.now();
     SQLHelperMap().createItemPoligon(v1, 'Polygon', cords, color, now.toString());
     return PolygonLayer(
-        polygons: [
-          Polygon (
-            points: [LatLng(56.28+x, 84.41+x), LatLng(56.27+x, 84.419+x), LatLng(56.289+x, 84.42+x)],
-            color: x<0.25 ? Colors.blue : Colors.red,
-            isFilled: true,
-          )
-        ]
+        polygons: mypolygons,
     );
   }
 }
